@@ -158,7 +158,8 @@ class doublyLinkedListMerge{
                     next1.prev = cur2;
                 }
                 else{
-                    this.last = cur2;
+                    this.last.next = cur2;
+                    last = d.last;
                 }
 
                 cur1 = next1;

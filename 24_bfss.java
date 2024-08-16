@@ -71,9 +71,10 @@ class linklist{
 }
 
 class graphop{
-    public linklist[] a;
-    public int v;
-    public linklist q;
+    //adjacency list representation, i think
+    public linklist[] a; //adjacency list
+    public int v; //number of vertices
+    public linklist q; //queue for dfs
      
     public graphop(int vert){
         v=vert;

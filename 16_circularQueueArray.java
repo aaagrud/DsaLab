@@ -6,24 +6,22 @@ class circularQueueArray{
     public circularQueueArray(int size){
         n = size;
         arr = new int[size];
-        rear = front = -1;
+        rear = -1;
+        front = 0;
     }
 
     public boolean isEmpty(){
-        return (front == -1);
+        return (rear + 1) % n == front;
     }
 
     public boolean isFull(){
-        return ((rear + 1) % n == front);
+        return ((rear + 2) % n == front);
     }
 
     public void enqueue(int x){
         if(isFull()){
             System.out.println("the queue is full");
             return;
-        }
-        else if(isEmpty()){
-            front = 0;
         }
         rear = (rear + 1) % n;
         arr[rear] = x;
@@ -32,9 +30,6 @@ class circularQueueArray{
     public void dequeue(){
         if(isEmpty()){
             System.out.println("the queue is empty");
-        }
-        else if(front == rear){
-            front = rear = -1;
         }
         else{
             front = (front + 1) % n;

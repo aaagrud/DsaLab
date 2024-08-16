@@ -1,4 +1,3 @@
-
 import java.io.*;
 
 class Node {
@@ -35,31 +34,6 @@ class BST {
         return root;
     }
 
-    public void delete(int key) {
-        root = deleteRec(root, key);
-    }
-
-    Node deleteRec(Node root, int key) {
-        if (root == null)
-            return root;
-
-        if (key < root.data)
-            root.left = deleteRec(root.left, key);
-        else if (key > root.data)
-            root.right = deleteRec(root.right, key);
-        else {
-            if (root.left == null)
-                return root.right;
-            else if (root.right == null)
-                return root.left;
-
-            root.data = minValue(root.right);
-            root.right = deleteRec(root.right, root.data);
-        }
-
-        return root;
-    }
-
     int minValue(Node root) {
         int minValue = root.data;
         while (root.left != null) {
@@ -69,12 +43,15 @@ class BST {
         return minValue;
     }
 
+    // In-order traversal without a helper function
     public void inorder() {
-        inorderRec(root);
+        System.out.print("In-order traversal: ");
+        Node current = root;
+        inorderRec(current);
         System.out.println();
     }
 
-    void inorderRec(Node root) {
+    private void inorderRec(Node root) {
         if (root != null) {
             inorderRec(root.left);
             System.out.print(root.data + " ");
@@ -82,12 +59,15 @@ class BST {
         }
     }
 
+    // Pre-order traversal without a helper function
     public void preorder() {
-        preorderRec(root);
+        System.out.print("Pre-order traversal: ");
+        Node current = root;
+        preorderRec(current);
         System.out.println();
     }
 
-    void preorderRec(Node root) {
+    private void preorderRec(Node root) {
         if (root != null) {
             System.out.print(root.data + " ");
             preorderRec(root.left);
@@ -95,12 +75,15 @@ class BST {
         }
     }
 
+    // Post-order traversal without a helper function
     public void postorder() {
-        postorderRec(root);
+        System.out.print("Post-order traversal: ");
+        Node current = root;
+        postorderRec(current);
         System.out.println();
     }
 
-    void postorderRec(Node root) {
+    private void postorderRec(Node root) {
         if (root != null) {
             postorderRec(root.left);
             postorderRec(root.right);
@@ -140,15 +123,12 @@ public class TreeTraversal {
                     System.out.println("Node deleted.");
                     break;
                 case 3:
-                    System.out.println("In-order traversal:");
                     bst.inorder();
                     break;
                 case 4:
-                    System.out.println("Pre-order traversal:");
                     bst.preorder();
                     break;
                 case 5:
-                    System.out.println("Post-order traversal:");
                     bst.postorder();
                     break;
                 case 6:

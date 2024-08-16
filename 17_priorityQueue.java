@@ -30,6 +30,7 @@ class priorityQueue{
         
         Node cur = first;
         while (cur.next != null && cur.next.priority <= p) {
+            cur = cur.next;
         }
         
         newNode.next = cur.next; 
